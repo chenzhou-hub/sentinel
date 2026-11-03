@@ -1,0 +1,61 @@
+2026-11-03T21:51:17.901+08:00  INFO 42148 --- [api-gateway] [           main] c.e.sentinel.gateway.GatewayApplication  : Starting GatewayApplication v1.0.0 using Java 21.0.9 with PID 42148 (D:\codes\myProject\sentinel\gateway\target\gateway-1.0.0.jar started by chenzhou in D:\codes\myProject\sentinel)
+2026-11-03T21:51:17.905+08:00  INFO 42148 --- [api-gateway] [           main] c.e.sentinel.gateway.GatewayApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-11-03T21:51:18.719+08:00  INFO 42148 --- [api-gateway] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=562590ea-5217-3e79-b8c8-f9350487b51b
+INFO: Sentinel log output type is: file
+INFO: Sentinel log charset is: utf-8
+INFO: Sentinel log base directory is: C:\Users\chenzhou\logs\csp\
+INFO: Sentinel log name use pid is: false
+INFO: Sentinel log level is: INFO
+2026-11-03T21:51:18.999+08:00  INFO 42148 --- [api-gateway] [           main] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Sentinel block handler initialized, resources are route ids
+2026-11-03T21:51:20.189+08:00  INFO 42148 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-11-03T21:51:20.668+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2026-11-03T21:51:20.675+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2026-11-03T21:51:20.675+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2026-11-03T21:51:20.675+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2026-11-03T21:51:20.675+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-11-03T21:51:20.676+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2026-11-03T21:51:20.678+08:00  INFO 42148 --- [api-gateway] [           main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-11-03T21:51:21.992+08:00  INFO 42148 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-11-03T21:51:22.063+08:00  INFO 42148 --- [api-gateway] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-11-03T21:51:23.382+08:00  INFO 42148 --- [api-gateway] [           main] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Token server assigned, host=192.168.0.20, port=18730, namespace=api-gateway
+2026-11-03T21:51:23.428+08:00  INFO 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Sentinel cluster client enabled, namespace=api-gateway, candidates=1
+2026-11-03T21:51:23.533+08:00  INFO 42148 --- [api-gateway] [           main] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Sentinel cluster client enabled, namespace=api-gateway, candidates=1
+2026-11-03T21:51:23.586+08:00  INFO 42148 --- [api-gateway] [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8082 (http)
+2026-11-03T21:51:24.597+08:00  INFO 42148 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-11-03T21:51:25.642+08:00  INFO 42148 --- [api-gateway] [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-11-03T21:51:25.753+08:00  INFO 42148 --- [api-gateway] [           main] c.e.sentinel.gateway.GatewayApplication  : Started GatewayApplication in 9.178 seconds (process running for 9.635)
+2026-11-03T21:51:25.857+08:00  INFO 42148 --- [api-gateway] [rvice-registrar] c.e.s.g.discovery.NacosServiceRegistrar  : [Gateway] Registered to Nacos, service=sentinel-gateway, group=DEFAULT_GROUP, namespace=public, address=192.168.0.20:8082, ephemeral=true
+2026-11-03T21:51:26.160+08:00  INFO 42148 --- [api-gateway] [           main] c.e.s.gateway.rule.FlowRuleSyncManager   : [Gateway] Nacos flow rule datasource registered, dataId=api-gateway-flow-rules, group=SENTINEL_GROUP
+2026-11-03T21:51:52.357+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.373+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.377+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.380+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.383+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.387+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:52.391+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-3] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:51:53.247+08:00  WARN 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] No healthy token-server for namespace api-gateway in Nacos, sentinel cluster client stopped and degraded to local limiting
+2026-11-03T21:51:53.247+08:00  WARN 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Degraded to local limiting, namespace=api-gateway, candidates=0
+2026-11-03T21:52:06.857+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.866+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.868+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.869+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.872+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.874+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:06.875+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-4] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:14.803+08:00  INFO 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Token server assigned, host=192.168.0.20, port=18730, namespace=api-gateway
+2026-11-03T21:52:14.830+08:00  INFO 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Sentinel cluster client enabled, namespace=api-gateway, candidates=1
+2026-11-03T21:52:14.830+08:00  INFO 42148 --- [api-gateway] [ncesChangeEvent] c.e.s.g.cluster.TokenServerDiscovery     : [Gateway] Token server available again, recovered from local limiting after 21583ms
+2026-11-03T21:52:38.192+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.202+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.204+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.207+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.208+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.211+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException
+2026-11-03T21:52:38.212+08:00  WARN 42148 --- [api-gateway] [ctor-http-nio-6] c.e.s.g.s.GatewaySentinelConfiguration   : [Gateway] Request blocked, path=/api/order, route=order-api, reason=FlowException

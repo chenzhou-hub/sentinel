@@ -1,0 +1,65 @@
+server:
+  # 管理端口：健康检查 / 巡检接口，不要与 token server 端口、sentinel 上报端口混用
+  port: ${SERVER_PORT:18731}
+  shutdown: graceful
+
+spring:
+  application:
+    name: sentinel-token-server
+  main:
+    banner-mode: off
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+sentinel:
+  # 可选：Token Server 自身作为应用接入 Dashboard，留空则不连控制台
+  dashboard: ${SENTINEL_DASHBOARD:}
+  # Sentinel 自身命令端口（csp.sentinel.api.port），默认 8719，避免与其他应用冲突改成 18732
+  api-port: ${SENTINEL_API_PORT:18732}
+  token-server:
+    # Token Client 直连端口
+    port: ${SENTINEL_TOKEN_SERVER_PORT:18730}
+    idle-seconds: 600
+    # 与 Token Client 的应用名（spring.application.name）保持一致，可配置多个
+    namespace-set:
+      - ${SENTINEL_TOKEN_NAMESPACE:demo-app}
+      # 网关应用名（gateway 的 spring.application.name），不匹配会退化为本地限流
+      - ${SENTINEL_GATEWAY_NAMESPACE:api-gateway}
+    # Token Server 全局 QPS 保护，去掉该行表示不限制
+    max-allowed-qps: ${SENTINEL_TOKEN_SERVER_MAX_QPS:100000}
+    interval-ms: 1000
+    sample-count: 10
+  rule:
+    enabled: true
+    group: ${SENTINEL_RULE_GROUP:SENTINEL_GROUP}
+    data-id-pattern: "{namespace}-flow-rules"
+    param-data-id-pattern: "{namespace}-param-flow-rules"
+
+nacos:
+  # 注意：Nacos 2.x 的 8080 是控制台端口，客户端应连服务端口 8848
+  server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
+  namespace: ${NACOS_NAMESPACE:}
+  # Nacos 开启鉴权时必须填写，未开启鉴权留空即可
+  username: ${NACOS_USERNAME:nacos}
+  password: ${NACOS_PASSWORD:zcqwe123}
+  discovery:
+    enabled: ${NACOS_DISCOVERY_ENABLED:true}
+    service-name: ${NACOS_SERVICE_NAME:sentinel-token-server}
+    group: ${NACOS_GROUP:DEFAULT_GROUP}
+    # 留空自动获取本机 IP；多网卡机器建议显式指定
+    ip: ${NACOS_REGISTER_IP:}
+    weight: 1.0
+
+logging:
+  level:
+    root: info
+    com.example.sentinel.tokenserver: info

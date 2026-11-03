@@ -1,0 +1,99 @@
+server:
+  port: ${SERVER_PORT:8082}
+  shutdown: graceful
+
+spring:
+  application:
+    # 该名字同时是集群流控的 namespace，必须出现在 token-server 的 namespace-set 中
+    name: api-gateway
+  main:
+    banner-mode: off
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 5s
+      routes:
+        # 演示路由：强制转发到本地 Mock 控制器，替换 uri 即可接入真实服务
+        - id: order-api
+          uri: ${ORDER_SERVICE_URI:forward:/mock/order}
+          predicates:
+            - Path=/api/order,/api/order/**
+        # 示例：负载均衡到注册中心里的服务
+        # - id: user-api
+        #   uri: lb://user-service
+        #   predicates:
+        #     - Path=/api/user/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: always
+
+sentinel:
+  # Dashboard 地址，留空则不上报（不影响限流）
+  # 注意：Nacos 控制台默认占用 8080，Dashboard 需要换端口（如 8858）
+  dashboard: ${SENTINEL_DASHBOARD:127.0.0.1:8858}
+  # Sentinel 命令端口，Dashboard 通过它下发规则；不要和 server.port 混用
+  api-port: ${SENTINEL_API_PORT:18719}
+  cluster:
+    enabled: ${SENTINEL_CLUSTER_ENABLED:true}
+    # 默认使用 spring.application.name，必须与 token-server 的 namespace 一致
+    namespace: ${SENTINEL_CLUSTER_NAMESPACE:${spring.application.name}}
+    # 对应 token-server 的 nacos.discovery.service-name / group
+    service-name: ${SENTINEL_TOKEN_SERVER_SERVICE:sentinel-token-server}
+    group: ${SENTINEL_TOKEN_SERVER_GROUP:DEFAULT_GROUP}
+    request-timeout: 20
+    connect-timeout-millis: 3000
+    # 启动时找不到 token-server 是否直接失败；false 表示先本地限流
+    fail-fast: false
+  rule:
+    enabled: ${SENTINEL_RULE_ENABLED:true}
+    # 与 token-server 的 sentinel.rule.group / data-id-pattern 保持一致
+    group: ${SENTINEL_RULE_GROUP:SENTINEL_GROUP}
+    data-id-pattern: "{namespace}-flow-rules"
+    # Dashboard 下发的规则补全集群信息后回写 Nacos，token-server 才能拿到集群阈值
+    publish-enabled: ${SENTINEL_RULE_PUBLISH_ENABLED:true}
+    auto-cluster-enabled: ${SENTINEL_RULE_AUTO_CLUSTER:true}
+    # 0 单机均摊，1 全局阈值
+    threshold-type: 0
+    cluster-strategy: 0
+    fallback-to-local-when-fail: true
+    sample-count: 10
+    window-interval-ms: 1000
+    # 自动生成 flowId 的范围：base + crc32(resource) % mod，必须全局唯一且为正数
+    flow-id-base: 100000
+    flow-id-mod: 1000000
+
+nacos:
+  # 注意：Nacos 2.x 的 8080 是控制台端口，客户端应连服务端口 8848
+  server-addr: ${NACOS_SERVER_ADDR:localhost:8848}
+  namespace: ${NACOS_NAMESPACE:}
+  username: ${NACOS_USERNAME:nacos}
+  password: ${NACOS_PASSWORD:zcqwe123}
+  discovery:
+    # 把网关自身注册到 Nacos 服务列表（仅注册，供控制台查看/其他组件发现）
+    enabled: ${NACOS_DISCOVERY_ENABLED:true}
+    service-name: ${NACOS_SERVICE_NAME:sentinel-gateway}
+    group: ${NACOS_GROUP:DEFAULT_GROUP}
+    cluster-name: ${NACOS_CLUSTER_NAME:DEFAULT}
+    # 留空自动获取本机内网 IP；多网卡机器建议显式指定
+    ip: ${NACOS_REGISTER_IP:}
+    weight: 1.0
+    # 临时实例：客户端心跳维持，进程退出自动剔除
+    ephemeral: true
+    # 附加元数据（可选），例如：
+    # metadata:
+    #   owner: platform
+
+logging:
+  level:
+    root: info
+    com.example.sentinel.gateway: info
+    com.alibaba.nacos: warn
