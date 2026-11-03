@@ -1,0 +1,25 @@
+# ---- Build output ----
+target/
+*.class
+*.jar.original
+!.mvn/wrapper/maven-wrapper.jar
+
+# ---- IDE ----
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.vscode/
+
+# ---- Runtime logs / local run artifacts ----
+.run/
+logs/
+*.log
+
+# ---- Downloaded binaries (get them from upstream releases) ----
+sentinel-dashboard-*.jar
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
